@@ -1,10 +1,13 @@
-def strV(namelist):
-	import re
-	# namelist = "**ali#thomas#ghadi#akmar#smith#barija**"
-	indicator = namelist.startswith("**") and namelist.endswith("**")
-	hashmarknum = len(re.findall("#", namelist)) + 1
-	namenum = len(re.findall(r"\b[\w]", namelist))
-	if hashmarknum - namenum == 0 and indicator:
-		return("Valid string")
-	else:
-		return("Not a valid string")
+from sys import argv
+
+script, namelist = argv
+# namelist = "**ali#thomas#ghadi#akmar#smith#barija**"
+indicator = namelist.startswith("**") and namelist.endswith("**")
+names = namelist.replace("##", "#").strip("**")
+hashmarknum = namelist.count("#") + 1
+namenum = len(names.split("#"))
+print(names, hashmarknum, namenum, namelist.count("#"), names.split("#"))
+if hashmarknum == namenum and indicator:
+	print("Valid string")
+else:
+	print("Not a valid string")
