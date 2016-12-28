@@ -5,7 +5,7 @@ class company():
         self.__email = email
         self.__contactDate = None
 
-    def seTContactDate(self, d):
+    def setContactDate(self, d):
         self.__contactDate = d
 
     def getName(self):
@@ -18,5 +18,5 @@ class company():
         return self.__contactDate
 
 thisCompany = company("Thunder Studio", "contact@thunder.studio")
-thisCompany.seTContactDate("2016.12.12")
+thisCompany.setContactDate("2016.12.12")
 print(thisCompany.getName(), thisCompany.getEmail(), thisCompany.getContactDate())

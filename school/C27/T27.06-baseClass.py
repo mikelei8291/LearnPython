@@ -7,20 +7,35 @@ class LibItem():
         self.__itemID = i
         self.__onLoan = False
         self.__dueDate = datetime.date.today()
+        self.__borrowerID = None
 
     def getTitle(self):
         return self.__title
 
     def borrow(self):
+        print("Borrowing Item Now...")
         self.__onLoan = True
+        self.__borrowerID = input("BorrowerID: ")
         self.__dueDate = self.__dueDate + datetime.timedelta(weeks=3)
 
     def returnback(self):
+        print("Returning Item Now..")
         self.__onLoan = False
+        self.__borrowerID = input("BorrowerID: ")
 
     def printInfo(self):
-        print("%s; %s;", end="" % (self.__title, self.__author))
-        print("%s; %s; %s" % (self.__itemID, self.__onLoan, self.__dueDate))
+        print("{0}; {1};".format(self.__title, self.__author), end=" ")
+        print("{0}; {1}; {2}; Borrowed by: {3}\
+            ".format(self.__itemID, self.__onLoan, self.__dueDate, self.__borrowerID))
+
+    def showMenu():
+        print("Welcome to the library management system!\
+            \n1 - Add a new borrower\n2 - Add a new book\n3 - Add a new CD\
+            \n4 - Borrow a book\n5 - Return a book\n6 - Borrow a CD\
+            \n7 - Return a CD\n8 - Request book\n9 - Show all infomation\
+            \n0 - Exit")
+        choice = input("Enter your choice: ")
+        print(choice)
 
 class Book(LibItem):
     def __init__(self, t, a, i):
@@ -33,6 +48,12 @@ class Book(LibItem):
 
     def setReqState(self):
         self.__reqState = True
+        self.__reqBy = input("RequestorID: ")
+
+    def getInfo(self):
+        print("Book Info:")
+        LibItem.printInfo(self)
+        print(self.__reqState)
 
 class CD(LibItem):
     def __init__(self, t, a, i):
@@ -45,7 +66,18 @@ class CD(LibItem):
     def setGenre(self, g):
         self.__genre = g
 
+    def getInfo(self):
+        print("CD Info:")
+        LibItem.printInfo(self)
+
 Title, Author, ItemID = input("Title: "), input("Author: "), input("ItemID: ")
 thisBook = Book(Title, Author, ItemID)
 Title, Artist, ItemID = input("Title: "), input("Artist: "), input("ItemID: ")
 thisCD = CD(Title, Artist, ItemID)
+
+thisBook.getInfo()
+thisCD.getInfo()
+thisBook.borrow()
+thisBook.getInfo()
+thisBook.returnback()
+thisBook.getInfo()
