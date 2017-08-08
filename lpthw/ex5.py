@@ -1,17 +1,17 @@
-my_name = 'Mike Lei'
-my_age = 17
-my_height = 185
-my_weight = 64.2
-my_eyes = 'Black'
-my_teeth = 'White'
-my_hair = 'Black'
+name = 'Mike Lei'
+age = 17
+height = 185
+weight = 64.2
+eyes = 'Black'
+teeth = 'White'
+hair = 'Black'
 
-print(f"Let's talk about {my_name}.")
-print(f"He's {my_height} centimetres tall.")
-print(f"He's {my_weight} kilograms heavy.")
-print("Actually that's too thin.")
-print(f"He's got {my_eyes} eyes and {my_hair} hair.")
-print(f"His teeth are usually {my_teeth} depending on the food.")
+print(f"Let's talk about {name}.")
+print(f"He's {height} centimetres tall, and that's {height / 2.54} inches.")
+print(f"He's {weight} kilograms heavy, and that's {weight * 2.20462} pounds.")
+print("Actually that's too thin, because he doesn't have lunch regularly.")
+print(f"He's got {eyes} eyes and {hair} hair.")
+print(f"His teeth are usually {teeth} depending on the food.")
 
-total = my_age + my_height + my_weight
-print(f"If I add {my_age}, {my_height} and {my_weight}, I get {total}.")
+total = age + height + weight
+print(f"If I add {age}, {height} and {weight}, I get {total}.")
